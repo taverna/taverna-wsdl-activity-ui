@@ -181,8 +181,8 @@ public class WSDLServiceProvider extends
 	 *         trimming has happened earlier.
 	 */
 	private String shortenDocumentation(String name, String doc) {
-		if (doc.matches(".*<\\s*[a-zA-Z].*"))
-			doc = doc.replaceAll("<.*?>", "");
+		doc = doc.replaceAll("<[\\/]?[\\ a-zA-Z]*[\\/]?>", "");
+		
 		for (char c : PROHIBITED_CHARS) {
 			int idx = doc.indexOf(c);
 			if (idx >= 0)
